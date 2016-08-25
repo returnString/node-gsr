@@ -1,0 +1,7 @@
+test/
+.vscode/
+coverage/
+.eslintrc
+.travis.yml
+appveyor.yml
+*.tgz

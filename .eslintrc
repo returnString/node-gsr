@@ -1,0 +1,19 @@
+{
+	"parserOptions": {
+		"ecmaVersion": 6,
+		"sourceType": "script"
+	},
+	"env": {
+		"es6": true,
+		"node": true
+	},
+	"extends": "eslint:recommended",
+	"rules": {
+		"comma-dangle": [ 2, "always-multiline" ],
+		"semi": 2,
+		"strict": [ 2, "global" ],
+		"no-constant-condition": [ 2, { "checkLoops": false } ],
+		"brace-style": [ 2, "allman", { "allowSingleLine": true } ],
+		"key-spacing": 2
+	}
+}

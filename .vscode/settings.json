@@ -1,0 +1,12 @@
+{
+	"editor.insertSpaces": false,
+	"files.exclude": {
+		"**/.git": true,
+		"**/.svn": true,
+		"**/.DS_Store": true,
+		"node_modules/": true,
+		"coverage/": true,
+		"**/*.log": true,
+		"**/*.tgz": true
+	}
+}

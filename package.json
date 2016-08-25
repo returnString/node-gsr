@@ -1,0 +1,28 @@
+{
+  "name": "gsr",
+  "version": "0.1.0",
+  "description": "",
+  "main": "index.js",
+  "bin": {
+    "gsr-neulog": "./bin/gsr-neulog.js"
+  },
+  "scripts": {},
+  "author": {
+    "name": "Ruan Pearce-Authers",
+    "email": "ruanpa@outlook.com"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "serialport": "^4.0.1"
+  },
+  "devDependencies": {
+    "eslint": "^3.3.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/returnString/node-gsr"
+  },
+  "bugs": {
+    "url": "https://github.com/returnString/node-gsr/issues"
+  }
+}
