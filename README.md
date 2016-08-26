@@ -19,11 +19,15 @@ npm install gsr -g
 ```
 
 # Usage
+These examples require you to know which serial port your hardware is connected to.
+We'll use COM3 as a consistent example here.
+TODO: Auto-detection of hardware. 
+
 ## Scripts
 You can retrieve GSR data inside your own Node.js scripts and apps.
 ```javascript
 const { NeuLogGsr } = require('gsr');
-const logger = new NeuLogGsr(port);
+const logger = new NeuLogGsr('COM3');
 
 logger.on('data', (value, timestamp) =>
 {
