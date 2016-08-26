@@ -1,11 +1,11 @@
 #!/usr/bin/env node
 'use strict';
 
+const co = require('co');
 const { NeuLogGsr } = require('../');
 const { port, interval } = require('yargs')
 	.option('port', {
 		alias: 'p',
-		required: true,
 	})
 	.option('interval', {
 		alias: 'i',
@@ -14,10 +14,14 @@ const { port, interval } = require('yargs')
 	})
 	.argv;
 
-const logger = new NeuLogGsr(port, { interval });
-logger.on('data', (value, timestamp, offset) =>
+co(function*()
 {
-	console.log(`${timestamp},${offset},${value}`);
-});
+	const loggerOptions = { interval };
+	const logger = port ? new NeuLogGsr(port, loggerOptions) : yield NeuLogGsr.find(loggerOptions);
+	logger.on('data', (value, timestamp, offset) =>
+	{
+		console.log(`${timestamp},${offset},${value}`);
+	});
 
-logger.start();
+	logger.start();
+}).catch(err => console.error(err.stack));
