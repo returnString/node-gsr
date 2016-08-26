@@ -40,7 +40,7 @@ logger.start();
 ## CLI
 As a quick start, you can use the bundled CLI scripts to test. You should see something like this:
 ```
-> gsr-neulog -p COM3 -o csv
+> gsr-neulog -p COM3
 0.0001 1472168867665
 0.0001 1472168867765
 0.0001 1472168867865
