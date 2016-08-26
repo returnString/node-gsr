@@ -38,13 +38,16 @@ logger.start();
 ```
 
 ## CLI
-As a quick start, you can use the bundled CLI scripts to test. You should see something like this:
+As a quick start, you can use the bundled CLI scripts to generate CSV data.
+You get the absolute/relative timestamps and the value in μS.
 ```
-> gsr-neulog -p COM3
-0.0001 1472168867665
-0.0001 1472168867765
-0.0001 1472168867865
-0.0001 1472168867964
-0.0001 1472168868064
-...
+> gsr-neulog -p COM3 > experiment.csv # ctrl-c to stop recording
+^C
+> head experiment.csv
+1472222326269,0,1.6368
+1472222326368,99,1.6364
+1472222326468,199,1.6379
+1472222326569,300,1.6346
+1472222326669,400,1.6302
+1472222326768,499,1.6291
 ```
