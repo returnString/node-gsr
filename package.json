@@ -6,7 +6,9 @@
   "bin": {
     "gsr-neulog": "./bin/gsr-neulog.js"
   },
-  "scripts": {},
+  "scripts": {
+    "postpublish": "git push --follow-tags"
+  },
   "author": {
     "name": "Ruan Pearce-Authers",
     "email": "ruanpa@outlook.com"
