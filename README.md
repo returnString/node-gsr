@@ -19,29 +19,53 @@ npm install gsr -g
 ```
 
 # Usage
-These examples require you to know which serial port your hardware is connected to.
-We'll use COM3 as a consistent example here.
-TODO: Auto-detection of hardware. 
-
 ## Scripts
 You can retrieve GSR data inside your own Node.js scripts and apps.
+
+You can choose to use a specific port, but the static `NeuLogGsr.find` is also available.
+It will query all serial ports for connected hardware, returning the first device that responds.
+
 ```javascript
 const { NeuLogGsr } = require('gsr');
-const logger = new NeuLogGsr('COM3');
+const co = require('co');
 
-logger.on('data', (value, timestamp) =>
+const needsSpecificLogger = true; // try changing me!
+
+function *getLogger()
 {
-	console.log(value, timestamp);
-});
+	if (needsSpecificLogger)
+	{
+		return new NeuLogGsr('COM3'); // this value depends on your configuration
+	}
+	else
+	{
+		return yield NeuLogGsr.find();
+	}
+}
 
-logger.start();
+function *main()
+{
+	const logger = yield getLogger();
+
+	logger.on('data', (value, timestamp) =>
+	{
+		console.log(value, timestamp);
+	});
+
+	logger.start();
+}
+
+co(main);
 ```
 
 ## CLI
 As a quick start, you can use the bundled CLI scripts to generate CSV data.
 You get the absolute/relative timestamps and the value in μS.
+
+As with the scripts, you can use a specific port (with `-p` or `--port`).
+If omitted, it will search through all connected devices and try connecting until one succeeds.
 ```
-> gsr-neulog -p COM3 > experiment.csv # ctrl-c to stop recording
+> gsr-neulog > experiment.csv # ctrl-c to stop recording
 ^C
 > head experiment.csv
 1472222326269,0,1.6368
