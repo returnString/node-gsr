@@ -7,11 +7,22 @@ Uses Node 6.x. Tested on Windows, needs confirmation for Linux/OSX.
 Supported hardware:
 - [NeuLog](https://neulog.com/gsr/)
 
+# Installation
+For a specific project:
+```
+npm install gsr --save
+```
+
+Globally, for the CLI tools:
+```
+npm install gsr -g
+```
+
 # Usage
 ## Scripts
-node-gsr can be consumed from your own Node.js scripts and apps.
+You can retrieve GSR data inside your own Node.js scripts and apps.
 ```javascript
-const { NeuLogGsr } = require('node-gsr');
+const { NeuLogGsr } = require('gsr');
 const logger = new NeuLogGsr(port);
 
 logger.on('data', (value, timestamp) =>
