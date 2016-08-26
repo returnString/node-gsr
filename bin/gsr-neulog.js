@@ -10,9 +10,9 @@ if (!port)
 }
 
 const logger = new NeuLogGsr(port, { interval });
-logger.on('data', (value, timestamp) =>
+logger.on('data', (value, timestamp, offset) =>
 {
-	console.log(value, timestamp);
+	console.log(`${timestamp},${offset},${value}`);
 });
 
 logger.start();
