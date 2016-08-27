@@ -18,6 +18,8 @@ co(function*()
 {
 	const loggerOptions = { interval };
 	const logger = port ? new NeuLogGsr(port, loggerOptions) : yield NeuLogGsr.find(loggerOptions);
+
+	console.log('timestamp,offset,value');
 	logger.on('data', (value, timestamp, offset) =>
 	{
 		console.log(`${timestamp},${offset},${value}`);

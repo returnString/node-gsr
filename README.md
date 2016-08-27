@@ -68,10 +68,10 @@ If omitted, it will search through all connected devices and try connecting unti
 > gsr-neulog > experiment.csv # ctrl-c to stop recording
 ^C
 > head experiment.csv
+timestamp,offset,value
 1472222326269,0,1.6368
 1472222326368,99,1.6364
 1472222326468,199,1.6379
 1472222326569,300,1.6346
 1472222326669,400,1.6302
-1472222326768,499,1.6291
 ```
