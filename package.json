@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "bin": {
-    "gsr-neulog": "./bin/gsr-neulog.js"
+    "gsr-neulog": "./bin/gsr-neulog.js",
+    "gsr-plot": "./bin/gsr-plot.r"
   },
   "scripts": {
     "postpublish": "git push --follow-tags"

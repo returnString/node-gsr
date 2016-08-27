@@ -7,6 +7,10 @@ Uses Node 6.x. Tested on Windows, needs confirmation for Linux/OSX.
 Supported hardware:
 - [NeuLog](https://neulog.com/gsr/)
 
+Optional dependencies:
+- R, for `gsr-plot` graphing tool
+	- libs: ggplot2
+
 # Installation
 For a specific project:
 ```
@@ -65,13 +69,18 @@ You get the absolute/relative timestamps and the value in μS.
 As with the scripts, you can use a specific port (with `-p` or `--port`).
 If omitted, it will search through all connected devices and try connecting until one succeeds.
 ```
-> gsr-neulog > experiment.csv # ctrl-c to stop recording
+$ gsr-neulog > experiment.csv # ctrl-c to stop recording
 ^C
-> head experiment.csv
+$ head experiment.csv
 timestamp,offset,value
 1472222326269,0,1.6368
 1472222326368,99,1.6364
 1472222326468,199,1.6379
 1472222326569,300,1.6346
 1472222326669,400,1.6302
+```
+
+To generate graphs from the csv files:
+```
+$ gsr-plot experiment.csv experiment.png
 ```
