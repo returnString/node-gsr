@@ -20,7 +20,8 @@ main <- function()
 	data <- read.csv(inputPath)
 	plot <- ggplot(data, aes(x = offset, y = value)) +
 		geom_line() +
-		labs(x = 'Time (ms)', y = 'GSR (microsiemens)')
+		labs(x = 'Time (ms)', y = 'GSR (microsiemens)') +
+		ylim(c(0, ceiling(max(data$value))))
 
 	ggsave(outputPath, plot)
 }
