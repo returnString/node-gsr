@@ -12,7 +12,7 @@ parser$add_argument('gameplayInput', help = 'input gameplay video')
 parser$add_argument('output', help = 'output video file')
 parser$add_argument('--fps', type = 'integer', default = 3, help = 'frames per second')
 parser$add_argument('--dpi', type = 'integer', default = 72, help = 'dpi for generated video frames')
-parser$add_argument('--tempdir', default = tempdir(), help = 'working directory for intermediate files')
+parser$add_argument('--tempdir', help = 'working directory for intermediate files')
 args <- parser$parse_args()
 
 main <- function()
@@ -22,7 +22,7 @@ main <- function()
 	gameplayInput <- args$gameplayInput
 	output <- args$output
 	dpi <- args$dpi
-	frameDir <- args$tempdir
+	frameDir <- if (is.null(args$tempdir)) tempdir() else args$tempdir
 
 	videoAttrs <- system(paste0('ffprobe -v 1 -show_entries stream=width,height,r_frame_rate ',
 		'-of default=noprint_wrappers=1:nokey=1 ', gameplayInput), intern = T)
