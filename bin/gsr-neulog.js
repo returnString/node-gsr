@@ -3,18 +3,24 @@
 
 const co = require('co');
 const { NeuLogGsr } = require('../');
-const { port, interval } = require('yargs')
+const { parseDuration } = require('../lib/utils');
+
+const { port, interval, duration } = require('yargs')
 	.option('port', {
 		alias: 'p',
 	})
 	.option('interval', {
 		alias: 'i',
-		default: 100,
-		number: true,
+		default: '100ms',
+		coerce: parseDuration,
+	})
+	.option('duration', {
+		alias: 'd',
+		coerce: parseDuration,
 	})
 	.argv;
 
-co(function*()
+function *main()
 {
 	const loggerOptions = { interval };
 	const logger = port ? new NeuLogGsr(port, loggerOptions) : yield NeuLogGsr.find(loggerOptions);
@@ -26,4 +32,14 @@ co(function*()
 	});
 
 	logger.start();
-}).catch(err => console.error(err.stack));
+
+	if (duration)
+	{
+		setTimeout(() =>
+		{
+			logger.stop();
+		}, duration);
+	}
+}
+
+co(main).catch(err => { console.error(err.stack); process.exit(1); });

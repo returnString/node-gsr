@@ -66,11 +66,15 @@ co(main);
 As a quick start, you can use the bundled CLI scripts to generate CSV data.
 You get the absolute/relative timestamps and the value in μS.
 
-As with the scripts, you can use a specific port (with `-p` or `--port`).
-If omitted, it will search through all connected devices and try connecting until one succeeds.
+All time-based parameters accept strings like `100ms`, `10s`, `30m`, `2h`.
+
+Available parameters:
+- `-p`, `--port`: attach to a specific port; if omitted, will search through all connected devices and try connecting until one succeeds
+- `-d`, `--duration`: run the logger for a fixed amount of time
+- `-i`, `--interval`: control the frequency at which values are recorded
+
 ```
-$ gsr-neulog > experiment.csv # ctrl-c to stop recording
-^C
+$ gsr-neulog -d 10s -i 100ms > experiment.csv
 $ head experiment.csv
 timestamp,offset,value
 1472222326269,0,1.6368
