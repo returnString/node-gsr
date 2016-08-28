@@ -73,18 +73,28 @@ Available parameters:
 - `-d`, `--duration`: run the logger for a fixed amount of time
 - `-i`, `--interval`: control the frequency at which values are recorded
 
+As an example, record 20 seconds of data with 10 events per second:
+
 ```
-$ gsr-neulog -d 10s -i 100ms > experiment.csv
+$ gsr-neulog -d 20s -i 100ms > experiment.csv
 $ head experiment.csv
 timestamp,offset,value
-1472222326269,0,1.6368
-1472222326368,99,1.6364
-1472222326468,199,1.6379
-1472222326569,300,1.6346
-1472222326669,400,1.6302
+1472306294526,0,1.2792
+1472306294626,100,1.283
+1472306294726,200,1.2898
+1472306294826,300,1.2983
+1472306294926,400,1.3037
+1472306295026,500,1.3071
+1472306295126,600,1.3095
+1472306295226,700,1.3085
+1472306295326,800,1.3056
 ```
 
 To generate graphs from the csv files:
 ```
 $ gsr-plot experiment.csv experiment.png
 ```
+
+It should output something like this:
+
+![](http://i.imgur.com/t3RMze6.png)
