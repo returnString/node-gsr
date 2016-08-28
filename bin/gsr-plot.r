@@ -1,29 +1,22 @@
 #!/usr/bin/env RScript
 library(ggplot2)
+library(proto)
+library(argparse)
 
-args <- commandArgs(trailingOnly = T)
+parser <- ArgumentParser()
+parser$add_argument('input', help = 'input csv file')
+parser$add_argument('output', help = 'output image file')
+args <- parser$parse_args()
 
 main <- function()
 {
-	inputPath <- args[1]
-	outputPath <- args[2]
-	if (is.na(inputPath))
-	{
-		stop('Please specify a csv file')
-	}
-
-	if (is.na(outputPath))
-	{
-		stop('Please specify an output file')
-	}
-
-	data <- read.csv(inputPath)
-	plot <- ggplot(data, aes(x = offset, y = value)) +
+	data <- read.csv(args$input)
+	plot <- ggplot(data, aes(x = offset / 1000, y = value)) +
 		geom_line() +
-		labs(x = 'Time (ms)', y = 'GSR (microsiemens)') +
+		labs(x = 'Time (s)', y = 'GSR (microsiemens)') +
 		ylim(c(0, ceiling(max(data$value))))
 
-	ggsave(outputPath, plot)
+	ggsave(args$output, plot)
 }
 
 dummy <- main()
