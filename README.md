@@ -98,3 +98,13 @@ $ gsr-plot experiment.csv experiment.png
 It should output something like this:
 
 ![](http://i.imgur.com/t3RMze6.png)
+
+To overlay the graph on some kind of source video, such as gameplay footage, use `gsr-video`:
+
+```
+$ gsr-video data.csv source_footage.mp4 output_video.mp4
+Input gameplay runs at 29.97002997003 FPS at 1280x720
+Rendering 588 frames using 8 cores
+Rendering video from frames: C:\Users\ruan\AppData\Local\Temp\RtmpoPUvpa/frames.mp4
+Merging with gameplay
+```
