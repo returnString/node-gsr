@@ -43,7 +43,7 @@ main <- function()
 	stopCluster(cluster)
 
 	message('Rendering video from frames: ', output)
-	system(paste0('ffmpeg.exe -v 1 -y -r ', fps, ' -i "', frameDir, '/%d.jpg" ', output))
+	system(paste0('ffmpeg -v 1 -y -r ', fps, ' -i "', frameDir, '/%d.jpg" ', output))
 }
 
 dummy <- main()
