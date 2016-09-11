@@ -53,7 +53,7 @@ main <- function()
 		plot <- ggplot(toRender, aes(x = offsetSeconds, y = value)) +
 			geom_line(color = graphColour, size = 2) +
 			labs(x = 'Time (s)', y = 'GSR (microsiemens)') +
-			ylim(c(0, ceiling(max(data$value)))) +
+			ylim(c(floor(min(data$value)), ceiling(max(data$value)))) +
 			xlim(c(0, duration)) +
 			theme(plot.background = element_rect(fill = 'transparent'),
 				panel.background = element_blank())
